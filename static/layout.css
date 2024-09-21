@@ -1,0 +1,126 @@
+/* General styles for full screen layout */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Fullscreen container with custom background */
+body, html {
+    height: 100%;
+    width: 100%;
+    font-family: 'Montserrat', sans-serif;
+    color: #fff;
+    background-image: url('/static/images/bg1.jpg'); /* Replace with your image */
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    overflow-y: scroll; /* Allow vertical scrolling */
+}
+
+/* Quiz container styling */
+.quiz-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh; /* Full screen height */
+    padding: 20px;
+    background-color: rgba(0, 0, 0, 0.5); /* Dark overlay for readability */
+}
+
+/* Box containing quiz with shadow effect */
+.quiz-box {
+    background-color: rgba(255, 255, 255, 0.1); /* Light transparent box */
+    padding: 40px;
+    border-radius: 12px;
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.4); /* Shadow around the box */
+    width: 80%;
+    max-width: 600px; /* Restrict maximum width */
+    text-align: center;
+    backdrop-filter: blur(10px); /* Frosted glass effect */
+}
+
+/* Quiz title */
+.quiz-title {
+    font-size: 36px;
+    margin-bottom: 40px;
+    color: #ffcc00;
+    opacity: 0;
+    animation: slideUp 2s forwards; /* Slide-in animation */
+}
+
+/* Question styling */
+.question {
+    margin-bottom: 30px;
+    color: #f8f8f8;
+    opacity: 0;
+    animation: fadeIn 1.5s forwards;
+}
+
+/* Flexbox row for options */
+.options-row {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 15px;
+}
+
+/* Option box styling */
+.option {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 15px 20px;
+    background-color: #d3d3d3; /* Initial gray color */
+    color: #333;
+    border-radius: 8px;
+    margin: 0 10px;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+    cursor: pointer;
+    font-size: 18px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+/* Hover effect */
+.option:hover {
+    transform: scale(1.02);
+}
+
+/* Selected option styling */
+input[type="radio"]:checked + .option-text {
+    background-color: #32cd32; /* Green for selected */
+    color: #ffffff;
+    border-radius: 8px;
+}
+
+/* Hide radio buttons */
+.option input {
+    display: none;
+}
+
+/* Animations */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes slideUp {
+    from {
+        transform: translateY(30px);
+        opacity: 0;
+    }
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+/* Smooth scrolling */
+html {
+    scroll-behavior: smooth;
+}

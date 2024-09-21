@@ -1,0 +1,78 @@
+/* General Page Styling */
+html, body {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    width: 100%;
+    font-family: 'Montserrat', sans-serif;
+    color: #ffffff;
+}
+
+/* Navigation Bar Styling */
+.navbar {
+    display: flex;
+    justify-content: space-between; /* Logo on the left, links on the right */
+    align-items: center;
+    background-color: #1a1a1a; /* Dark background */
+    padding: 15px 30px; /* Padding inside the navbar */
+    position: fixed; /* Stick to the top */
+    width: 100%;
+    z-index: 10;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.5); /* Add a subtle shadow for depth */
+}
+
+/* Logo Styling */
+.logo-img {
+    max-height: 50px; /* Keep logo at a reasonable height */
+    transition: transform 0.3s ease-in-out;
+}
+
+.logo-img:hover {
+    transform: scale(1.1); /* Enlarge slightly on hover */
+}
+
+/* Navigation Links */
+.nav-links {
+    list-style: none; /* Remove bullet points */
+    display: flex; /* Display links in a row */
+    gap: 30px; /* Space between the links */
+}
+
+.nav-links li {
+    display: inline;
+}
+
+.nav-links a {
+    text-decoration: none;
+    color: #ffcc00; /* Highlight color for links */
+    font-weight: 600;
+    transition: color 0.3s ease-in-out, transform 0.3s ease-in-out;
+}
+
+.nav-links a:hover {
+    color: #ffffff; /* Change color on hover */
+    transform: translateY(-3px); /* Slight upward motion on hover */
+}
+
+/* Add smooth sliding down animation for navbar */
+@keyframes slideDown {
+    from {
+        transform: translateY(-100%);
+    }
+    to {
+        transform: translateY(0);
+    }
+}
+
+.animate-slide-down {
+    animation: slideDown 0.8s ease-out;
+}
+
+/* Container for Page Content */
+.container {
+    padding-top: 100px; /* Ensure content starts below the navbar */
+    text-align: center;
+    background-color: rgba(16, 5, 38, 0.85);
+    color: #ffffff;
+    min-height: 100vh;
+}

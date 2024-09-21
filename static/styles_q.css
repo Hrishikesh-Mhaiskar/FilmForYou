@@ -1,0 +1,167 @@
+/* General reset and full screen setup */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body, html {
+    height: 100%;
+    width: 100%;
+    font-family: 'Montserrat', sans-serif;
+    color: #fff;
+    background-image: url('/static/images/bg1.jpg'); /* Replace with your image */
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    overflow-y: scroll; /* Allow vertical scrolling */
+}
+.text-input {
+    width: 100%;
+    padding: 15px 20px;
+    border-radius: 8px;
+    border: 1px solid #888888; /* Match with option box color */
+    background-color: #888888; /* Darker gray shade */
+    color: #fff; /* Text color */
+    font-size: 18px;
+    transition: background-color 0.3s ease;
+}
+
+.text-input:focus {
+    background-color: #800080; /* Change to purple when focused */
+    color: #fff; /* Keep text color white */
+    outline: none; /* Remove outline */
+}
+
+/* Fullscreen container for quiz */
+.quiz-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh; /* Full screen height */
+    padding: 20px;
+    background-color: rgba(0, 0, 0, 0.5); /* Dark overlay for readability */
+}
+
+/* Box containing quiz with shadow effect */
+.quiz-box {
+    background-color: rgba(255, 255, 255, 0.1); /* Light transparent box */
+    padding: 40px;
+    border-radius: 12px;
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.4); /* Shadow around the box */
+    width: 80%;
+    max-width: 600px; /* Restrict maximum width */
+    text-align: center;
+    backdrop-filter: blur(10px); /* Frosted glass effect */
+}
+
+/* Quiz title */
+.quiz-title {
+    font-size: 36px;
+    margin-bottom: 40px;
+    color: #ffcc00;
+    opacity: 0;
+    animation: slideUp 2s forwards; /* Slide-in animation */
+}
+
+/* Question styling */
+.question {
+    margin-bottom: 30px;
+    color: #f8f8f8;
+    font-size: 24px; /* Increased font size */
+    opacity: 0;
+    animation: fadeIn 1.5s forwards;
+}
+
+/* Flexbox row for options (2 options per row) */
+.options-row {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 15px;
+}
+
+/* Option box styling */
+/* Option box styling */
+.option {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 15px 20px;
+    background-color: #b0b0b0; /* Changed to grayish shade */
+    color: #333;
+    border-radius: 8px;
+    margin: 0 10px;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+    cursor: pointer;
+    font-size: 18px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    position: relative; /* Needed for overlay animation */
+}
+
+
+/* Hover effect */
+.option:hover {
+    transform: scale(1.02);
+}
+
+/* Custom radio buttons hidden */
+input[type="radio"] {
+    display: none;
+}
+
+/* Custom label styling for options */
+label {
+    display: block;
+    width: 100%;
+    height: 100%;
+    text-align: center;
+    padding: 15px 0;
+    cursor: pointer;
+    border-radius: 8px;
+}
+
+/* When the radio button is checked, the entire box turns purple */
+input[type="radio"]:checked + label {
+    background-color: #800080; /* Purple color */
+    color: rgb(255, 255, 255); /* Text color changes to white */
+    transition: background-color 0.3s ease;
+}
+
+/* Animations for questions and quiz */
+@keyframes slideUp {
+    from {
+        transform: translateY(50px);
+        opacity: 0;
+    }
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+/* Next button styling */
+.next-button {
+    padding: 15px 30px;
+    font-size: 20px; /* Increased font size */
+    background-color: #ffcc00; /* Button color */
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: transform 0.3s ease, background-color 0.3s ease;
+}
+
+.next-button:hover {
+    transform: scale(1.05);
+    background-color: #e6b800; /* Darker yellow on hover */
+}

@@ -1,0 +1,161 @@
+/* Ensure the website takes up the entire screen and allows scrolling */
+html, body {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    width: 100%;
+    overflow-x: hidden; /* Prevent horizontal scrolling */
+    overflow-y: auto; /* Enable vertical scrolling */
+    font-family: 'Montserrat', sans-serif;
+    color: #ffffff; /* Set text color to white globally */
+}
+
+/* Add a full-screen background image */
+body {
+    background-image: url('/static/images/bg2.jpg'); /* Replace with your image URL */
+    background-size: cover; /* Cover the entire background */
+    background-position: center; /* Center the background image */
+    background-repeat: no-repeat; /* Prevent image repetition */
+    background-attachment: fixed; /* Keep the background fixed while scrolling */
+}
+
+/* Make the container take up the full width, but allow content to grow and scroll vertically */
+.container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center; /* Center content horizontally */
+    width: 100%;
+    min-height: 100vh; /* Ensure it takes at least the full screen height */
+    background-color: rgba(16, 5, 38, 0.85); /* Add a slight overlay for readability */
+    padding: 40px;
+    text-align: center;
+}
+
+/* Logo Styling */
+.welcome-img {
+    max-width: 600px;
+    height: auto;
+    margin-bottom: 20px;
+    transition: transform 0.5s ease-in-out;
+}
+
+/* Intro Text */
+.intro-text {
+    color: #f0f0f0; /* Slightly lighter shade for better readability */
+    font-size: 24px;
+    margin-bottom: 30px;
+    font-weight: 500;
+}
+
+/* Button Styling */
+.start-btn {
+    background-color: #ff0066;
+    color: white;
+    padding: 15px 40px;
+    text-decoration: none;
+    border-radius: 50px;
+    font-size: 24px;
+    font-weight: bold;
+    box-shadow: 0 8px 15px rgba(255, 0, 102, 0.3);
+    transition: all 0.3s ease-in-out;
+    margin-bottom: 40px;
+}
+
+.start-btn:hover {
+    background-color: #d60052;
+    box-shadow: 0 15px 25px rgba(255, 0, 102, 0.5);
+    transform: translateY(-5px);
+}
+
+/* About Us Section */
+.about-us {
+    margin-top: 40px;
+    text-align: center;
+    color: #f8f8f8;
+    font-size: 18px;
+    opacity: 0;
+    animation: slideUp 1.5s forwards;
+    max-width: 800px;
+}
+
+.about-us h2 {
+    color: #ffcc00;
+    margin-bottom: 20px;
+}
+
+/* Team Section */
+/* Team Section */
+.team {
+    display: flex;
+    flex-direction: column; /* Stack the team heading and members vertically */
+    align-items: center; /* Center team section horizontally */
+    margin-top: 50px;
+    opacity: 0;
+    animation: slideUp 2s forwards;
+    width: 100%; /* Ensure team section takes full width */
+    max-width: 900px;
+}
+
+/* Team Heading */
+.team h2 {
+    color: #ffcc00;
+    margin-bottom: 20px; /* Add some space below the heading */
+}
+
+/* Team Member Styling */
+.team-member {
+    display: flex; /* Use flexbox to align items in a row */
+    align-items: center; /* Center vertically */
+    margin: 20px 0; /* Add vertical spacing between members */
+    transition: transform 0.3s ease-in-out;
+    max-width: 100%; /* Ensure members fit within the container */
+}
+
+.team-member:hover {
+    transform: scale(1.05); /* Slightly scale up on hover */
+}
+
+/* Team Member Image */
+.member-img {
+    width: 100%;
+    height: auto;
+    max-width: 100px; /* Set a fixed size for images */
+    border-radius: 50%;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4);
+    margin-right: 20px; /* Space between image and text */
+}
+
+/* Team Links Styling */
+.team-links {
+    color: #cccccc; /* Lighter color for links */
+    font-size: 16px;
+}
+
+.team-links a {
+    color: #ffcc00; /* Link color */
+    text-decoration: none;
+    margin: 0 5px;
+}
+
+.team-links a:hover {
+    text-decoration: underline;
+}
+
+
+/* Animations */
+@keyframes slideUp {
+    from {
+        transform: translateY(30px);
+        opacity: 0;
+    }
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+/* Smooth scrolling */
+html {
+    scroll-behavior: smooth;
+}

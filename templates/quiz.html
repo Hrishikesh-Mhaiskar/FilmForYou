@@ -1,0 +1,410 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Quiz Page</title>
+    <link rel="stylesheet" href="/static/styles_q.css" />
+    <style>
+      /* Additional styles */
+      .question {
+        font-size: 24px; /* Increased font size for questions */
+        margin-bottom: 30px;
+        color: #f8f8f8;
+        opacity: 0;
+        animation: fadeIn 1.5s forwards;
+      }
+
+      .next-button {
+        font-size: 20px; /* Increased font size for button */
+        padding: 15px 30px; /* Increased padding */
+        background-color: #800080; /* Purple background */
+        color: #fff; /* White text */
+        border: none; /* Remove default border */
+        border-radius: 8px; /* Rounded corners */
+        cursor: pointer; /* Pointer cursor on hover */
+        transition: transform 0.3s ease, background-color 0.3s ease; /* Animation for hover */
+        margin-top: 30px; /* Space above the button */
+      }
+
+      .next-button:hover {
+        transform: scale(1.05); /* Slightly increase size on hover */
+        background-color: #a500a0; /* Darker purple on hover */
+      }
+
+      @keyframes fadeIn {
+        from {
+          opacity: 0;
+        }
+        to {
+          opacity: 1;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="quiz-container">
+      <div class="quiz-box">
+        <div class="quiz-title">Movie Preference Quiz</div>
+        <form action="/quiz" method="POST">
+          <!-- Question 1 -->
+          <div class="question">
+            What genre do you usually prefer?(eg. horror,drama,comedy,action)
+          </div>
+          <div class="options-row">
+            <input
+              type="text"
+              id="q1_input"
+              name="question1"
+              class="text-input"
+              placeholder="Type your answer here"
+            />
+          </div>
+
+          <!-- Question 2 -->
+          <div class="question">
+            What kind of movies do you prefer watching?
+          </div>
+          <div class="options-row">
+            <div class="option">
+              <input type="radio" id="q2_option1" name="question2" />
+              <label for="q2_option1">Blockbusters</label>
+            </div>
+            <div class="option">
+              <input type="radio" id="q2_option2" name="question2" />
+              <label for="q2_option2">Indie/Arthouse</label>
+            </div>
+          </div>
+          <div class="options-row">
+            <div class="option">
+              <input type="radio" id="q2_option3" name="question2" />
+              <label for="q2_option3">Animated</label>
+            </div>
+            <div class="option">
+              <input type="radio" id="q2_option4" name="question2" />
+              <label for="q2_option4">Documentaries</label>
+            </div>
+          </div>
+
+          <!-- Question 3 -->
+          <div class="question">How long are you willing to watch a movie?</div>
+          <div class="options-row">
+            <div class="option">
+              <input type="radio" id="q3_option1" name="question3" />
+              <label for="q3_option1">Less than 90 minutes</label>
+            </div>
+            <div class="option">
+              <input type="radio" id="q3_option2" name="question3" />
+              <label for="q3_option2">90–120 minutes</label>
+            </div>
+          </div>
+          <div class="options-row">
+            <div class="option">
+              <input type="radio" id="q3_option3" name="question3" />
+              <label for="q3_option3">120–150 minutes</label>
+            </div>
+            <div class="option">
+              <input type="radio" id="q3_option4" name="question3" />
+              <label for="q3_option4">More than 150 minutes</label>
+            </div>
+          </div>
+
+          <!-- Question 4 -->
+          <div class="question">
+            What type of mood are you in for the movie?
+          </div>
+          <div class="options-row">
+            <div class="option">
+              <input type="radio" id="q4_option1" name="question4" />
+              <label for="q4_option1">Light-hearted</label>
+            </div>
+            <div class="option">
+              <input type="radio" id="q4_option2" name="question4" />
+              <label for="q4_option2">Thought-provoking</label>
+            </div>
+          </div>
+          <div class="options-row">
+            <div class="option">
+              <input type="radio" id="q4_option3" name="question4" />
+              <label for="q4_option3">Suspenseful</label>
+            </div>
+            <div class="option">
+              <input type="radio" id="q4_option4" name="question4" />
+              <label for="q4_option4">Romantic</label>
+            </div>
+          </div>
+
+          <!-- Question 5 -->
+          <div class="question">
+            Which of these themes attracts you most in a film?
+          </div>
+          <div class="options-row">
+            <div class="option">
+              <input type="radio" id="q5_option1" name="question5" />
+              <label for="q5_option1">Love and relationships</label>
+            </div>
+            <div class="option">
+              <input type="radio" id="q5_option2" name="question5" />
+              <label for="q5_option2">Revenge and justice</label>
+            </div>
+          </div>
+          <div class="options-row">
+            <div class="option">
+              <input type="radio" id="q5_option3" name="question5" />
+              <label for="q5_option3">Adventure and exploration</label>
+            </div>
+            <div class="option">
+              <input type="radio" id="q5_option4" name="question5" />
+              <label for="q5_option4">Social and political issues</label>
+            </div>
+          </div>
+
+          <!-- Question 6 -->
+          <div class="question">What kind of endings do you prefer?</div>
+          <div class="options-row">
+            <div class="option">
+              <input type="radio" id="q6_option1" name="question6" />
+              <label for="q6_option1">Happy</label>
+            </div>
+            <div class="option">
+              <input type="radio" id="q6_option2" name="question6" />
+              <label for="q6_option2">Sad</label>
+            </div>
+          </div>
+          <div class="options-row">
+            <div class="option">
+              <input type="radio" id="q6_option3" name="question6" />
+              <label for="q6_option3">Cliffhanger</label>
+            </div>
+            <div class="option">
+              <input type="radio" id="q6_option4" name="question6" />
+              <label for="q6_option4">Unpredictable</label>
+            </div>
+          </div>
+
+          <!-- Question 7 -->
+          <div class="question">Which setting do you enjoy most in films?</div>
+          <div class="options-row">
+            <div class="option">
+              <input type="radio" id="q7_option1" name="question7" />
+              <label for="q7_option1">Modern-day cities</label>
+            </div>
+            <div class="option">
+              <input type="radio" id="q7_option2" name="question7" />
+              <label for="q7_option2">Historical periods</label>
+            </div>
+          </div>
+          <div class="options-row">
+            <div class="option">
+              <input type="radio" id="q7_option3" name="question7" />
+              <label for="q7_option3">Outer space</label>
+            </div>
+            <div class="option">
+              <input type="radio" id="q7_option4" name="question7" />
+              <label for="q7_option4">Fantasy worlds</label>
+            </div>
+          </div>
+
+          <!-- Question 8 -->
+          <div class="question">
+            Do you prefer character-driven or plot-driven movies?
+          </div>
+          <div class="options-row">
+            <div class="option">
+              <input type="radio" id="q8_option1" name="question8" />
+              <label for="q8_option1">Character-driven</label>
+            </div>
+            <div class="option">
+              <input type="radio" id="q8_option2" name="question8" />
+              <label for="q8_option2">Plot-driven</label>
+            </div>
+          </div>
+          <div class="options-row">
+            <div class="option">
+              <input type="radio" id="q8_option3" name="question8" />
+              <label for="q8_option3">Both equally</label>
+            </div>
+            <div class="option">
+              <input type="radio" id="q8_option4" name="question8" />
+              <label for="q8_option4">Don’t have a preference</label>
+            </div>
+          </div>
+
+          <!-- Question 9 -->
+          <div class="question">How much action do you prefer in movies?</div>
+          <div class="options-row">
+            <div class="option">
+              <input type="radio" id="q9_option1" name="question9" />
+              <label for="q9_option1">A lot of action</label>
+            </div>
+            <div class="option">
+              <input type="radio" id="q9_option2" name="question9" />
+              <label for="q9_option2">Some action</label>
+            </div>
+          </div>
+          <div class="options-row">
+            <div class="option">
+              <input type="radio" id="q9_option3" name="question9" />
+              <label for="q9_option3">Minimal action</label>
+            </div>
+            <div class="option">
+              <input type="radio" id="q9_option4" name="question9" />
+              <label for="q9_option4">No action at all</label>
+            </div>
+          </div>
+
+          <!-- Question 10 -->
+          <div class="question">
+            Which type of protagonist appeals to you most?
+          </div>
+          <div class="options-row">
+            <div class="option">
+              <input type="radio" id="q10_option1" name="question10" />
+              <label for="q10_option1">Heroic</label>
+            </div>
+            <div class="option">
+              <input type="radio" id="q10_option2" name="question10" />
+              <label for="q10_option2">Anti-hero</label>
+            </div>
+          </div>
+          <div class="options-row">
+            <div class="option">
+              <input type="radio" id="q10_option3" name="question10" />
+              <label for="q10_option3">Underdog</label>
+            </div>
+            <div class="option">
+              <input type="radio" id="q10_option4" name="question10" />
+              <label for="q10_option4">Villain-focused</label>
+            </div>
+          </div>
+
+          <!-- Question 11 -->
+          <div class="question">What kind of humor do you enjoy in films?</div>
+          <div class="options-row">
+            <div class="option">
+              <input type="radio" id="q11_option1" name="question11" />
+              <label for="q11_option1">Slapstick</label>
+            </div>
+            <div class="option">
+              <input type="radio" id="q11_option2" name="question11" />
+              <label for="q11_option2">Dark comedy</label>
+            </div>
+          </div>
+          <div class="options-row">
+            <div class="option">
+              <input type="radio" id="q11_option3" name="question11" />
+              <label for="q11_option3">Satirical</label>
+            </div>
+            <div class="option">
+              <input type="radio" id="q11_option4" name="question11" />
+              <label for="q11_option4">Light-hearted humor</label>
+            </div>
+          </div>
+
+          <!-- Question 12 -->
+          <div class="question">
+            How important are visuals and special effects to you?
+          </div>
+          <div class="options-row">
+            <div class="option">
+              <input type="radio" id="q12_option1" name="question12" />
+              <label for="q12_option1">Extremely important</label>
+            </div>
+            <div class="option">
+              <input type="radio" id="q12_option2" name="question12" />
+              <label for="q12_option2">Important but not essential</label>
+            </div>
+          </div>
+          <div class="options-row">
+            <div class="option">
+              <input type="radio" id="q12_option3" name="question12" />
+              <label for="q12_option3">Somewhat important</label>
+            </div>
+            <div class="option">
+              <input type="radio" id="q12_option4" name="question12" />
+              <label for="q12_option4">Not important</label>
+            </div>
+          </div>
+
+          <!-- Question 13 -->
+          <div class="question">Do you like movies based on true stories?</div>
+          <div class="options-row">
+            <div class="option">
+              <input type="radio" id="q13_option1" name="question13" />
+              <label for="q13_option1">Love them</label>
+            </div>
+            <div class="option">
+              <input type="radio" id="q13_option2" name="question13" />
+              <label for="q13_option2">Like them sometimes</label>
+            </div>
+          </div>
+          <div class="options-row">
+            <div class="option">
+              <input type="radio" id="q13_option3" name="question13" />
+              <label for="q13_option3">Don’t really care</label>
+            </div>
+            <div class="option">
+              <input type="radio" id="q13_option4" name="question13" />
+              <label for="q13_option4">Prefer fictional stories</label>
+            </div>
+          </div>
+
+          <!-- Question 14 -->
+          <div class="question">
+            How do you feel about complex, mind-bending plots?
+          </div>
+          <div class="options-row">
+            <div class="option">
+              <input type="radio" id="q14_option1" name="question14" />
+              <label for="q14_option1">Love them</label>
+            </div>
+            <div class="option">
+              <input type="radio" id="q14_option2" name="question14" />
+              <label for="q14_option2">Enjoy occasionally</label>
+            </div>
+          </div>
+          <div class="options-row">
+            <div class="option">
+              <input type="radio" id="q14_option3" name="question14" />
+              <label for="q14_option3">Prefer simpler plots</label>
+            </div>
+            <div class="option">
+              <input type="radio" id="q14_option4" name="question14" />
+              <label for="q14_option4">Not a fan at all</label>
+            </div>
+          </div>
+
+          <!-- Question 15 -->
+          <div class="question">
+            Do you like movies with sequels and franchises?
+          </div>
+          <div class="options-row">
+            <div class="option">
+              <input type="radio" id="q15_option1" name="question15" />
+              <label for="q15_option1">Love sequels and franchises</label>
+            </div>
+            <div class="option">
+              <input type="radio" id="q15_option2" name="question15" />
+              <label for="q15_option2">Enjoy them sometimes</label>
+            </div>
+          </div>
+          <div class="options-row">
+            <div class="option">
+              <input type="radio" id="q15_option3" name="question15" />
+              <label for="q15_option3">Prefer standalone movies</label>
+            </div>
+            <div class="option">
+              <input type="radio" id="q15_option4" name="question15" />
+              <label for="q15_option4">No preference</label>
+            </div>
+          </div>
+
+          <!-- Next Button -->
+          <button type="submit" class="next-button">get recommendation</button>
+        </form>
+      </div>
+    </div>
+
+    <script src="quiz.js"></script>
+  </body>
+</html>
